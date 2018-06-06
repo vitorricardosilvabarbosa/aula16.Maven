@@ -10,6 +10,7 @@ import javax.persistence.Query;
 import org.junit.Test;
 
 import br.com.start.db1.classes.Cidade;
+import br.com.start.db1.classes.Endereco;
 import br.com.start.db1.tipos.Uf;
 
 public class MainTest {
@@ -20,15 +21,17 @@ public class MainTest {
 		EntityManager manager = factory.createEntityManager();
 
 		Cidade cidade = new Cidade();
-		cidade.setNome("Maringa");
+		cidade.setNome("Araucária");
 		cidade.setUf(Uf.PR);
 		manager.getTransaction().begin();
 		manager.persist(cidade);
 		manager.getTransaction().commit();
-
+		
 		factory.close();
 
 	}
+	
+
 
 	@Test
 	public void deleteTest() {
@@ -65,7 +68,7 @@ public class MainTest {
 		EntityManager manager = factory.createEntityManager();
 
 		Query query = manager.createQuery("Select c from Cidade c");
-		List<Cidade> cidades = query.getResultList();
+		List<Cidade> cidade = query.getResultList();
 
 		factory.close();
 
@@ -77,7 +80,7 @@ public class MainTest {
 		EntityManager manager = factory.createEntityManager();
 
 		Query query = manager.createNativeQuery("Select * from cidade c");
-		List<Cidade> cidades = query.getResultList();
+		List<Cidade> cidade = query.getResultList();
 
 		factory.close();
 
