@@ -25,6 +25,9 @@ public class Endereco {
 	@Enumerated(EnumType.STRING)
 	private TipoLogradouro tipoLogradouro;
 	
+	@ManyToOne(fetch=FetchType.LAZY)
+	private Pessoa pessoa;
+	
 	public TipoLogradouro getTipoLogradouro() {
 		return tipoLogradouro;
 	}
